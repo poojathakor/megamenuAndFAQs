@@ -1,0 +1,72 @@
+
+{% if section.blocks.size > 0 %}
+  <div class="medium-up--four-fifths mx-auto">
+    <div class="section-header text-center">
+      <h2>{{ section.settings.title | escape }}</h2>
+    </div>
+    <div class="accordionWrapper">
+      {% for block in section.blocks %}
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">
+          {% if block.settings.title != blank %}
+          	<span class="title">{{block.settings.title}}</span>
+          {% endif %}
+          <span class="icon"></span>
+        </h2>
+        <div class="accordionItemContent">
+          {% if block.settings.desc != blank %}
+          	<p>{{block.settings.desc}}</p>
+          {% endif %}
+        </div>
+       
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+{% schema %}
+{
+  "name": "Faqs",
+  "class": "section-faqs",
+  "settings": [
+  	{
+      "type": "text",
+      "id": "title",
+	  "label": "Title",
+	  "default":"FAQs"
+	}
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "faq",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Lorem Ipsum is simply dummy text"
+        },
+        {
+          "type": "textarea",
+          "id": "desc",
+          "label": "Description",
+          "default": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Faqs",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
